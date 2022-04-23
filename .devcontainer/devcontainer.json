@@ -28,7 +28,8 @@
 		"python.linting.mypyPath": "/usr/local/py-utils/bin/mypy",
 		"python.linting.pycodestylePath": "/usr/local/py-utils/bin/pycodestyle",
 		"python.linting.pydocstylePath": "/usr/local/py-utils/bin/pydocstyle",
-		"python.linting.pylintPath": "/usr/local/py-utils/bin/pylint"
+        "python.linting.pylintPath": "/usr/local/py-utils/bin/pylint",
+        "java.home": "/docker-java-home"
 	},
 
 	// Add the IDs of extensions you want installed when the container is created.
@@ -48,6 +49,6 @@
 	"features": {
 		"github-cli": "latest",
 		"jupyterlab": "latest",
-		"java": "latest"
+        "java": "latest"
 	}
 }
