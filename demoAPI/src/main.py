@@ -1,9 +1,10 @@
+import pandas as pd
 from fastapi import FastAPI
 from fastapi.responses import HTMLResponse
-from pydantic import BaseModel
+from neqsim.process import compressor, stream
 from neqsim.thermo.thermoTools import fluid_df
-from neqsim.process import stream,  compressor
-import pandas as pd
+from pydantic import BaseModel
+
 
 class compressorCalc(BaseModel):
     N2: float=0.01
@@ -40,7 +41,7 @@ class compressorCalc(BaseModel):
 
 class compressorResults(BaseModel):
     polytropicEfficiency: float
-    polytropiFluidHeaad: float
+    polytropicFluidHead: float
 
 
 app = FastAPI()
@@ -51,7 +52,8 @@ def read_root():
     <html>
         <head>
             <title>NeqSim Live Demo API</title>
-        </head>        <body>
+        </head>
+        <body>
             <h1>NeqSim Live Demo API</h1>
             <a href="/docs">API documentation and testing</a><br>
         </body>
@@ -65,6 +67,6 @@ def compressorCalc(compressor:compressorCalc):
     compresults = compressor.polytropicEfficiency()
     results = {
         'polytropicEfficiency': float(compresults[1]),
-        'polytropiFluidHeaad': float(compresults[0])
+        'polytropicFluidHead': float(compresults[0])
     }
     return results
