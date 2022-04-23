@@ -2,3 +2,4 @@ neqsim
 fastapi
 uvicorn
 requests
+pytest
