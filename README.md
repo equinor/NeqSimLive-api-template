@@ -5,7 +5,7 @@ This is a template for creating a NeqSimLive API, typically for deployment in [R
 ## Getting started
 Click "Use this template" to generate a repository for your API. Select a relevant name for the repository and if it is public/internal/private. NB! Internal is recommended if it is to be deployed in Radix.
 
-All user development is done in python. See demoAPI/src for a sample application and demoAPI/example for a jupyter notebook testing the API. See the [NeqSimPython project](https://github.com/equinor/neqsimpython) for documentation of how to use NeqSim in Python. 
+All user development is done in python. See demoAPI/src for a sample application and demoAPI/example for a jupyter notebook for testing the API and for connecting to plant data. See the [NeqSimPython project](https://github.com/equinor/neqsimpython) for documentation of how to use NeqSim in Python. 
 
 
 ## Develop using Codespaces
