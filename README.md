@@ -13,20 +13,27 @@ In your new repository, click the "<> Code" button and select "codespaces" if yo
 
 
 ## Getting ready for deployment
-Document your API in demoAPI/README.md.  
-Rename the demoAPI folder to a suitable short name for your application you are making.
+Document your API in demoAPI/README.md. Rename the demoAPI folder to a suitable short name for your application you are making. Start all adresses with the name of the API, eg. for the compressorCalc operation in demoAPI we use @app.post("/demoAPI/compressorCalc"). This naming convention is needed to use the API from Sigma. 
 
 
 ## Pull the code into NeqSimLive repo 
 Open NeqSimLive [NeqSimLive repo](https://github.com/equinor/NeqSimLive) local or using CodeSpaces. Make a new branch in NeqSimLive and run command command 
 ```
-git submodule add "path to you new API"
+git submodule add "path to your API"
 ````
 When a pull request is created, the NeqSimLive administrators will review and merge into NeqSimLive main branch, thus making it available via Radix to be used via tools such as Sigma for online monitoring. API updates are done in your own  of API are done on your own branch and by pulling the updates into NeqSimLive.
 
 
 ## Go live using Sigma
-Establish Sigma server, config page and start live process calculation and monitoring.
-Contact NeqSimLive administrators.
+Establish Sigma server, config page and start live process calculation and monitoring. Contact NeqSimLive administrators for help setting up a new server. In Sigma you set input parameters, call your API, and read results as demonstrated in the following code.
+
+```
+input.temperature_inlet = 20.0
+input.pressure_inlet = 25.0
+....
+response = NeqSim(demoAPI, compressorCalc, input)
+....
+compHead = response.polytropicFluidHead
+````
 
 

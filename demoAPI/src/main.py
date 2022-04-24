@@ -47,7 +47,7 @@ class compressorResults(BaseModel):
 
 app = FastAPI()
 
-@app.get("/")
+@app.get("/demoAPI/")
 def read_root():
     html_content = """
     <html>
@@ -63,7 +63,7 @@ def read_root():
     return HTMLResponse(content=html_content, status_code=200)
 
  
-@app.post("/compressorCalc",response_model=compressorResults,description="Calculate the polytropic efficiency of a compressor")
+@app.post("/demoAPI/compressorCalc",response_model=compressorResults,description="Calculate the polytropic efficiency of a compressor")
 def compressorCalc(compressor:compressorImpl):
     compresults = compressor.polytropicEfficiency()
     results = {
