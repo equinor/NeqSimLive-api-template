@@ -16,7 +16,7 @@ Document your API in demoAPI/README.md.
 Rename the demoAPI folder to a suitable short name for your application you are making.
 
 ## Pull the code into NeqSimLive repo 
-Open NeqSimLive [NeqSimLive repo](https://github.com/equinor/NeqSimLive) local or using CodeSpaces. Make a new branch in NeqSimLive. Run command git submodule add "git path to you new API". Your API will then be reviwed by NeqSimLive administrators and merged into NeqSimLive main branch and available via Raddix to be used via tools such as Sigma for online monitoring.
+Open NeqSimLive [NeqSimLive repo](https://github.com/equinor/NeqSimLive) local or using CodeSpaces. Make a new branch in NeqSimLive. Run command git submodule add "git path to you new API". Your API will then be reviwed by NeqSimLive administrators and merged into NeqSimLive main branch and available via Raddix to be used via tools such as Sigma for online monitoring. Updates of API are done on your own branch and by pulling the updates into NeqSimLive.
 
 ## Go live using Sigma
 Establish Sigma server, config page and start live process calculation and monitoring.
