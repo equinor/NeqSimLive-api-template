@@ -6,7 +6,7 @@ from neqsim.thermo.thermoTools import fluid_df
 from pydantic import BaseModel, Field
 
 
-class compressorCalc(BaseModel):
+class compressorImpl(BaseModel):
     #Establish input parameters with defaualt values
     N2: float=0.01
     CO2: float=0.01
@@ -18,10 +18,10 @@ class compressorCalc(BaseModel):
     npentane: float=0.001
     nhexane: float=0.001
     #Examples of documenting and setting range validation on input variables using Field type
-    temperature_inlet: float = Field(20.0, title="Temperature of feed gas to compressor [°C]",lt=200.0, gt=-100.0, description="Temperature in range -100 to +200 °C")
-    pressure_inlet: float = Field(25.0, title="Pressure of feed gas to compressor [bara]",lt=200.0, gt=0.0, description="Pressure in range 0 to 200 bara")
-    temperature_outlet: float = Field(95.0, title="Temperature of exit gas from compressor [°C]",lt=200.0, gt=-100.0, description="Temperature in range -100 to +200 °C")
-    pressure_outlet: float = Field(60.0, title="Pressure of exit gas from compressor [bara]",lt=1000.0, gt=0.0, description="Pressure in range 0 to 1000 bara")
+    temperature_inlet: float = Field(20.0, title="Temperature of gas to compressor [°C]",lt=200.0, gt=-100.0, description="Temperature in range -100 to +200 °C")
+    pressure_inlet: float = Field(25.0, title="Pressure of feed to compressor [bara]",lt=200.0, gt=0.0, description="Pressure in range 0 to 200 bara")
+    temperature_outlet: float = Field(95.0, title="Temperature of discharge from compressor [°C]",lt=200.0, gt=-100.0, description="Temperature in range -100 to +200 °C")
+    pressure_outlet: float = Field(60.0, title="Pressure of discharge from compressor [bara]",lt=1000.0, gt=0.0, description="Pressure in range 0 to 1000 bara")
     
     def polytropicEfficiency(self):
         gascondensate = {
@@ -41,8 +41,8 @@ class compressorCalc(BaseModel):
         return [compressor1.getPolytropicFluidHead(), compressor1.getPolytropicEfficiency()]
 
 class compressorResults(BaseModel):
-    polytropicEfficiency: float
-    polytropicFluidHead: float
+    polytropicEfficiency: float = Field( title="Polytropic efficiency [-]",gt=0.0)
+    polytropicFluidHead: float = Field( title="Polytropic fluid head [kJ/kg]",gt=0.0)
 
 
 app = FastAPI()
@@ -64,7 +64,7 @@ def read_root():
 
  
 @app.post("/compressorCalc",response_model=compressorResults,description="Calculate the polytropic efficiency of a compressor")
-def compressorCalc(compressor:compressorCalc):
+def compressorCalc(compressor:compressorImpl):
     compresults = compressor.polytropicEfficiency()
     results = {
         'polytropicEfficiency': float(compresults[1]),
