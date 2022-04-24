@@ -47,7 +47,7 @@ class compressorResults(BaseModel):
 
 app = FastAPI()
 
-@app.get("/demoAPI/")
+@app.get("/")
 def read_root():
     html_content = """
     <html>
