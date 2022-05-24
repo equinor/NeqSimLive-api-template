@@ -1,4 +1,4 @@
-FROM openjdk:11
+FROM openjdk:16.0.1
 RUN apt-get update -y && \
     apt-get install -y \
             python3 python3-pip
