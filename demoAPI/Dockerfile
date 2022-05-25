@@ -1,4 +1,4 @@
-FROM openjdk:16.0.1
+FROM eclipse-temurin:18.0.1_10-jdk
 RUN apt-get update -y && \
     apt-get install -y \
             python3 python3-pip
